@@ -14,6 +14,7 @@
 		   super(stage);
 		   eggMath = ((Math.round(Math.random()*3) + 1)*1000);
 			beginEggTimer();
+			canDieToggle();
 			addEventListener(Event.ENTER_FRAME, animateHen);
        }
 	   public function beginEggTimer()
@@ -38,6 +39,10 @@
 		   horribleDeath();
 	   }
 	   public function animateHen(event:Event){
+			if (hitCar == true && this.currentFrame < 21){
+				this.gotoAndStop(21);
+				//hitCar = false;
+			}
 		   if (this.currentFrame == 9) {
 			   this.gotoAndStop(1);
 		   }
@@ -51,6 +56,10 @@
 			   super.AItrue();
 			   this.gotoAndStop(1);
 		   }
+			if (this.currentFrame == 26 && canDie == false){
+				canDieToggle();
+				destructor();
+			}
 	   }
    }
 }

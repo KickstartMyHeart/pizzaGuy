@@ -31,6 +31,7 @@
 			v = 10;
 			//add an ENTER_FRAME event so we can do some logic at frame rate
 			addEventListener(Event.ENTER_FRAME, enterFrame);
+			addEventListener(Event.ENTER_FRAME, animateCar);
 		}
 		private function enterFrame(event:Event){
 			//setupLevel.main.hp.healthText.text = health;
@@ -50,6 +51,18 @@
 				y +=v;
 			}
 		}
+	   public function animateCar(event:Event){
+		   if (this.currentFrame == 6) {
+			   this.gotoAndStop(1);
+		   }
+		   else {
+			   this.gotoAndStop(this.currentFrame+1);
+		   }
+			if (health < 1 && this.currentFrame < 7){
+				this.gotoAndStop(7);
+				//hitCar = false;
+			}
+	   }
 		
 	}
 }
